@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['data-mahasiswa'] = 'mahasiswa/index';
+$route['data-mahasiswa'] = 'siswa/index';
 $route['jadwal-mahasiswa'] = 'mahasiswa/jadwal';
 
 

@@ -12,16 +12,16 @@
     <!-- Page Content -->
     <div id="content-wrapper">
 
+    <?php $this->load->view('include/navbar');?>
 <div class="container-fluid">
 
   <!-- DataTables -->
-  <div class="card mb-3">
     <div class="card-header">
       <a href="<?php echo site_url('siswa/add') ?>"><i class="fas fa-plus"></i> Add New</a>
     </div>
     <div class="card-body">
 
-      <div class="table-responsive">
+      <div class="table-responsive ">
         <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -33,24 +33,32 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($hasil as $sw): ?>
+            <?php foreach ($pasien->result() as $pasien): ?>
             <tr>
               <td width="150">
-                <?php echo $sw->nama ?>
+                <?php echo $pasien->nama ?>
               </td>
               <td>
-                <?php echo $sw->nis ?>
+                <?php echo $pasien->kode ?>
               </td>
               <td>
-             <?php  echo $sw->no_telpon?>
+             <?php  echo $pasien->gender?>
               </td>
               <td class="small">
-                <?php echo substr($sw->alamat, 0, 120) ?>...</td>
+             <?php  echo $pasien->tmp_lahir?>
+             </td>
+             <td>
+             <?php  echo $pasien->email?>
+              </td>
               <td width="250">
-                <a href="<?php echo site_url('admin/products/edit/'.$sw->id) ?>"
+              
+              <a href="<?php echo site_url('/pasien/view/'.$pasien->id) ?>"
+                 class="btn btn-small"><i class="fas fa-edit"></i> View</a>
+                <a href="<?php echo site_url('admin/products/edit/'.$pasien->id) ?>"
                  class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$sw->id) ?>')"
-                 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                 
+                <a href="<?php echo site_url('pasien/hapus/'.$pasien->id) ?>"
+                 class="btn btn-small"  onclick="return confirm('Are you sure you want to delete this item?')"><i class="fas fa-edit"></i> Hapus</a>
               </td>
             </tr>
             <?php endforeach; ?>
